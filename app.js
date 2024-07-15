@@ -1,5 +1,5 @@
 let numerosSorteados = [];
-let numeroLimite = 1000;
+let numeroLimite = 100;
 let numeroSecreto = gerarNumeroAleatorio();
 let tentativas = 1;
 
@@ -8,10 +8,11 @@ exibirMensagemInicial();
 function verificarChute() {
     let chute = document.querySelector('input').value;
     console.log(chute == numeroSecreto);
-    console.log('Numero Secreto: ' + numeroSecreto);
-    console.log('Numero de tentativas: ' + tentativas);
+    // console.log('Numero Secreto: ' + numeroSecreto);
+    // console.log('Numero de tentativas: ' + tentativas);
 
     if (chute == numeroSecreto) {
+        exibirImagemNaTela();
         exibirTextoNaTela('h1', 'Acertou!');
         let palavraTentativa = tentativas > 1? 'tentativas' : 'tentativa';
         let mensagemTentativas = `Você descobriu o número secreto com ${tentativas} ${palavraTentativa}!`;
@@ -31,6 +32,10 @@ function verificarChute() {
 function exibirTextoNaTela (tag, texto) {
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
+}
+
+function exibirImagemNaTela() {
+    document.getElementById('img').src="img/joguinho.png";
 }
 
 function gerarNumeroAleatorio () {
@@ -58,6 +63,7 @@ function limparCampo() {
 function exibirMensagemInicial() {
     exibirTextoNaTela('h1', 'Jogo do Número Secreto');
     exibirTextoNaTela('p', `Escolha um número de 1 a ${numeroLimite}:`);
+    document.getElementById('img').src="img/nerdola.png";
 }
 
 function reiniciarJogo() {
